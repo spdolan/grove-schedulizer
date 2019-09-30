@@ -1,0 +1,12 @@
+body {
+  background: #c5b7b7;
+  color: set-text-color(#c5b7b7);
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1;
+}
+
+.text-secondary {
+  color: #5285f1;
+}
+/*# sourceMappingURL=main.css.map */
