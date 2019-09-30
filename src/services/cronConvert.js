@@ -9,4 +9,4 @@ const cronConvert = (cronString) => {
   }
 }
 
-module.exports = cronConvert;
+export default cronConvert;

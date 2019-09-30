@@ -22,4 +22,4 @@ const notify = () => {
   }
 }
 
-module.exports = notify;
+export default notify;

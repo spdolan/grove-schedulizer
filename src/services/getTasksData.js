@@ -1,7 +1,7 @@
 import axios from 'axios';
 import data from '../data/tasks.json';
 
-const getTasks = () => {
+const getTasksData = () => {
   // for offline use TODO: remove before submission
   const tasksData = data;
 
@@ -12,4 +12,4 @@ const getTasks = () => {
   return Promise.resolve(tasksData);
 }
 
-module.exports = getTasks;
+export default getTasksData;
