@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/index";
 
-import './src/main.css';
+import './css/main.css';
 
 // import Day from './views/Day';
 import DayStructured from './components/DayStructured';

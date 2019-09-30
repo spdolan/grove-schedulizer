@@ -7,7 +7,7 @@ export const GET_TASKS = 'GET_TASKS';
 
 export const getAndConvertTasks = () => dispatch => {
 
-  getTasksData
+  getTasksData()
     .then((response) => {
       // console.log(response);
       // due to async, we will likely need to move this into our services

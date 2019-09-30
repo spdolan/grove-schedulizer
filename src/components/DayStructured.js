@@ -7,17 +7,25 @@ class DayStructured extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hours: [Array.from(23).keys()].map(i => i++)
+      hours: [...Array(23).keys()].map(x => x+1)
     }
     this.renderHourLines = this.renderHourLines.bind(this);  
   }
 
   componentDidMount(){
     this.props.getAndConvertTasks();
+    // const hoursArray = [...Array.from(23).keys()].map(i => i++)
+    // this.setState({ hours: hoursArray})
   }
 
   renderHourLines(){
-    return this.state.hours.map(hour => <hr className='dayStructured_hour'></hr>);
+    return this.state.hours.map(hour => {
+      return(
+        <div className='dayStructured_hour'>
+          <span className='dayStructured_hour_text'>{`${hour}:00`}</span> <hr></hr>
+        </div>
+      )
+    });
   }
 
   render(){

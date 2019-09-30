@@ -1,18 +1,32 @@
 .dayStructured{
-  padding-bottom: 2rem;
+  background-color: azure;
+  padding: 4rem 0;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  justify-content: center;
+  
   height: 100vh;
 
   &_hour{
-    color: $secondary-color;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-flow: row wrap;
+    color: black;
+    width: 90%;
+
+    &_text{
+      width: 2rem;
+    }
+
+    hr {
+      width: 90%;
+      color: $primary-color;
+    }
   }
 }
 
 @for $i from 1 to 24 {
   .dayStructured_hour:nth-child(#{$i}){
-    top: ($i * 4vh);
+    top: ($i * 5vh);
   }
 }
