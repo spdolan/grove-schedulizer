@@ -21,7 +21,8 @@ class DayStructured extends React.Component {
   renderHourLines(){
     return this.state.hours.map(hour => {
       return(
-        <div className='dayStructured_hour'>
+        // the developer is not advocating for using values as keys here
+        <div className='dayStructured_hour' key={hour}>
           <span className='dayStructured_hour_text'>{`${hour}:00`}</span> <hr></hr>
         </div>
       )

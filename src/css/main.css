@@ -15,6 +15,7 @@
 }
 
 .dayStructured_hour {
+  z-index: 0;
   padding: 0.5rem 0;
   display: -webkit-box;
   display: -ms-flexbox;

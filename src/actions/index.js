@@ -7,11 +7,11 @@ export const GET_TASKS = 'GET_TASKS';
 
 export const getAndConvertTasks = () => dispatch => {
 
+  // promise from our service axios call to tasks endpoint 
   getTasksData()
     .then((response) => {
-      // console.log(response);
-      // due to async, we will likely need to move this into our services
-      const updatedTasksData = addDatesToTasksFromCron(response);
+      // callback service to update tasks array with parsed Cron interval
+      const updatedTasksData = addDatesToTasksFromCron(response.data);
       dispatch({ type: GET_TASKS, payload: updatedTasksData });
     })
     .catch((error) => {
