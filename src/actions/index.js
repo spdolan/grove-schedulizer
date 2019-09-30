@@ -4,6 +4,8 @@ import addDatesToTasksFromCron from '../services/addDatesToTasksFromCron';
 
 // some syntactic sugar here for us to auto-complete action types elsewhere
 export const GET_TASKS = 'GET_TASKS';
+export const UPDATE_CALENDAR = 'UPDATE_CALENDAR';
+export const SET_CURRENT_DAY = 'SET_CURRENT_DAY';
 
 export const getAndConvertTasks = () => dispatch => {
 

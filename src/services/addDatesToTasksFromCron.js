@@ -1,20 +1,47 @@
-import cronConvert from './cronConvert';
+const parser = require('cron-parser');
 
-const addDatesToTasksFromCron = (tasksArray) => {
+// time boxing our calendar for the app - these could be .env values
+const options = {
+  currentDate: '2019-07-04 00:00:01',
+  endDate: '2020-07-04 23:59:59',
+  tz: 'America/New_York',
+  iterator: true
+};
 
+const addDatesToCalendarFromCron = (currentCalendarObject , tasksArray) => {
+
+  const updatedCalendarObject = currentCalendarObject;
   // map to return array of task objects
-  const updatedTasksArray = tasksArray.map(taskObject => {
+  tasksArray.forEach(taskObject => {
     // extract our cron string from each taskObject
-    const taskCron = taskObject.attributes.cron;
-    // convert to a plain Date(s) within an array
-    const taskCronDateInterval = cronConvert(taskCron);
-    // we'll add that Date(s) array and return our update taskObject
-    taskObject.attributes.interval = taskCronDateInterval;
-    // may need to flatten for React to access our task information
-    return taskObject;
+    const taskObjectId = taskObject.id;
+    const taskCronString = taskObject.attributes.cron;
+    const taskObjectName = taskObject.attributes.name;
+    
+    try {
+      const interval = parser.parseExpression(taskCronString, options);
+      // boolean is from the library's interval.next().done property
+      while (options.iterator) {
+        try {
+          const obj = interval.next();
+          // console.log(obj.value);
+          // console.log('value:', obj.value._date.format('L'), 'done:', obj.done);
+          // TODO: check actual getter within Moment library
+          updatedCalendarObject[obj.value._date.format('L')].push({
+            'taskId': taskObjectId,
+            'taskName': taskObjectName,
+            'taskDateTime':obj.value.toString()
+          });
+        } catch (e) {
+          break;
+        }
+      }
+    } catch (err) {
+      console.log('Error: ' + err.message);
+    }
   });
 
-  return updatedTasksArray;
+  return updatedCalendarObject;
 }
 
-export default addDatesToTasksFromCron;
+export default addDatesToCalendarFromCron;
