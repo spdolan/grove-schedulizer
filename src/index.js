@@ -8,7 +8,8 @@ import rootReducer from "./reducers/index";
 
 import './src/main.css';
 
-import Day from './views/Day';
+// import Day from './views/Day';
+import DayStructured from './components/DayStructured';
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
 
@@ -16,7 +17,7 @@ ReactDOM.render(
   <Provider store={store}>
     < BrowserRouter>
       <Switch>
-        <Route path="/" component={Day} />
+        <Route path="/" component={DayStructured} />
         <Redirect to='/' />
       </Switch>
     </ BrowserRouter>

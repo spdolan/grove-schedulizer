@@ -1,3 +1,117 @@
+.dayStructured {
+  padding-bottom: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+.dayStructured_hour {
+  color: #5285f1;
+}
+
+.dayStructured_hour:nth-child(1) {
+  top: 4vh;
+}
+
+.dayStructured_hour:nth-child(2) {
+  top: 8vh;
+}
+
+.dayStructured_hour:nth-child(3) {
+  top: 12vh;
+}
+
+.dayStructured_hour:nth-child(4) {
+  top: 16vh;
+}
+
+.dayStructured_hour:nth-child(5) {
+  top: 20vh;
+}
+
+.dayStructured_hour:nth-child(6) {
+  top: 24vh;
+}
+
+.dayStructured_hour:nth-child(7) {
+  top: 28vh;
+}
+
+.dayStructured_hour:nth-child(8) {
+  top: 32vh;
+}
+
+.dayStructured_hour:nth-child(9) {
+  top: 36vh;
+}
+
+.dayStructured_hour:nth-child(10) {
+  top: 40vh;
+}
+
+.dayStructured_hour:nth-child(11) {
+  top: 44vh;
+}
+
+.dayStructured_hour:nth-child(12) {
+  top: 48vh;
+}
+
+.dayStructured_hour:nth-child(13) {
+  top: 52vh;
+}
+
+.dayStructured_hour:nth-child(14) {
+  top: 56vh;
+}
+
+.dayStructured_hour:nth-child(15) {
+  top: 60vh;
+}
+
+.dayStructured_hour:nth-child(16) {
+  top: 64vh;
+}
+
+.dayStructured_hour:nth-child(17) {
+  top: 68vh;
+}
+
+.dayStructured_hour:nth-child(18) {
+  top: 72vh;
+}
+
+.dayStructured_hour:nth-child(19) {
+  top: 76vh;
+}
+
+.dayStructured_hour:nth-child(20) {
+  top: 80vh;
+}
+
+.dayStructured_hour:nth-child(21) {
+  top: 84vh;
+}
+
+.dayStructured_hour:nth-child(22) {
+  top: 88vh;
+}
+
+.dayStructured_hour:nth-child(23) {
+  top: 92vh;
+}
+
 body {
   background: #c5b7b7;
   color: set-text-color(#c5b7b7);
