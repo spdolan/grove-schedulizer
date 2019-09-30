@@ -1,19 +1,19 @@
 .dayStructured{
   background-color: azure;
-  padding: 4rem 0;
-  display: flex;
-  flex-flow: column wrap;
+  padding:  2rem;
+  height: 30vh;
   align-items: center;
-  
-  height: 100vh;
+  flex-flow: column;
+  overflow: scroll;
 
   &_hour{
     z-index: 0;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
+    margin: 0;
     display: flex;
     flex-flow: row wrap;
     color: black;
-    width: 90%;
+    width: 100%;
 
     &_text{
       width: 2rem;
@@ -26,8 +26,8 @@
   }
 }
 
-@for $i from 1 to 24 {
-  .dayStructured_hour:nth-child(#{$i}){
-    top: ($i * 5vh);
-  }
-}
+// @for $i from 1 to 24 {
+//   .dayStructured_hour:nth-child(#{$i}){
+//     top: ($i * 10%);
+//   }
+// }

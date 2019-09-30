@@ -1,22 +1,21 @@
 .dayStructured {
   background-color: azure;
-  padding: 4rem 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+  padding: 2rem;
+  height: 30vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  overflow: scroll;
 }
 
 .dayStructured_hour {
   z-index: 0;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
+  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,7 +24,7 @@
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   color: black;
-  width: 90%;
+  width: 100%;
 }
 
 .dayStructured_hour_text {
@@ -35,98 +34,6 @@
 .dayStructured_hour hr {
   width: 90%;
   color: #c5b7b7;
-}
-
-.dayStructured_hour:nth-child(1) {
-  top: 5vh;
-}
-
-.dayStructured_hour:nth-child(2) {
-  top: 10vh;
-}
-
-.dayStructured_hour:nth-child(3) {
-  top: 15vh;
-}
-
-.dayStructured_hour:nth-child(4) {
-  top: 20vh;
-}
-
-.dayStructured_hour:nth-child(5) {
-  top: 25vh;
-}
-
-.dayStructured_hour:nth-child(6) {
-  top: 30vh;
-}
-
-.dayStructured_hour:nth-child(7) {
-  top: 35vh;
-}
-
-.dayStructured_hour:nth-child(8) {
-  top: 40vh;
-}
-
-.dayStructured_hour:nth-child(9) {
-  top: 45vh;
-}
-
-.dayStructured_hour:nth-child(10) {
-  top: 50vh;
-}
-
-.dayStructured_hour:nth-child(11) {
-  top: 55vh;
-}
-
-.dayStructured_hour:nth-child(12) {
-  top: 60vh;
-}
-
-.dayStructured_hour:nth-child(13) {
-  top: 65vh;
-}
-
-.dayStructured_hour:nth-child(14) {
-  top: 70vh;
-}
-
-.dayStructured_hour:nth-child(15) {
-  top: 75vh;
-}
-
-.dayStructured_hour:nth-child(16) {
-  top: 80vh;
-}
-
-.dayStructured_hour:nth-child(17) {
-  top: 85vh;
-}
-
-.dayStructured_hour:nth-child(18) {
-  top: 90vh;
-}
-
-.dayStructured_hour:nth-child(19) {
-  top: 95vh;
-}
-
-.dayStructured_hour:nth-child(20) {
-  top: 100vh;
-}
-
-.dayStructured_hour:nth-child(21) {
-  top: 105vh;
-}
-
-.dayStructured_hour:nth-child(22) {
-  top: 110vh;
-}
-
-.dayStructured_hour:nth-child(23) {
-  top: 115vh;
 }
 
 body {
