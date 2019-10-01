@@ -1,5 +1,5 @@
 const parser = require('cron-parser');
-const R = require('ramda');
+
 // time boxing our calendar for the app - these could be .env values
 const options = {
   currentDate: '2019-07-04 00:00:01',
@@ -10,8 +10,8 @@ const options = {
 
 const addDatesToCalendarFromCron = (tasksArray, currentCalendarObject) => {
   return new Promise((resolve, reject) => {
-    // using Ramda here to use the library's default clone operation
-    const updatedCalendarObject = R.clone(currentCalendarObject);
+    
+    const updatedCalendarObject = currentCalendarObject;
     // loop over each task
     tasksArray.forEach(taskObject => {
       // extract our cron string from each taskObject

@@ -9,13 +9,13 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getTasks();
-    this.props.updateCalendarFromTasksCron();
+    
   }
 
   render() {
     return (
       <div className='calendar'>
+        <h2>Calendar</h2>
       </div>
     )
   }
@@ -23,8 +23,7 @@ class Calendar extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    calendar: state.calendar
-    // currentDate: state.currentDate
+    currentDate: state.currentDate
   };
 }
 
