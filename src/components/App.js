@@ -2,6 +2,7 @@ import React from 'react';
 import { getTasks, updateCalendarFromTasksCron } from '../actions';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Calendar from './Calendar';
 import DayStructured from './DayStructured';
 
 class App extends React.Component {
@@ -13,13 +14,18 @@ class App extends React.Component {
     this.props.getTasks();
   }
 
-  componentDidUpdate(){
-    this.props.updateCalendarFromTasksCron(this.props.tasks, this.props.calendar);
+  componentDidUpdate(prevProps){
+    // check based on initial tasks length
+    if(this.props.tasks.length !== prevProps.tasks.length){
+      this.props.updateCalendarFromTasksCron(this.props.tasks, this.props.calendar);
+    }
+    
   }
 
   render() {
     return (
       <div className='main'>
+        <Calendar />
         <DayStructured />
       </div>
     )

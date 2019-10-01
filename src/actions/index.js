@@ -5,7 +5,7 @@ import addDatesToCalendarFromCron from '../services/addDatesToCalendarFromCron';
 // some syntactic sugar here for us to auto-complete action types elsewhere
 export const GET_TASKS = 'GET_TASKS';
 export const UPDATE_CALENDAR = 'UPDATE_CALENDAR';
-export const SET_CURRENT_DAY = 'SET_CURRENT_DAY';
+export const SET_CURRENT_DATE = 'SET_CURRENT_DATE';
 
 export const getTasks = () => dispatch => {
   // promise from our service axios call to tasks endpoint 

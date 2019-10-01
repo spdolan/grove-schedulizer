@@ -1,4 +1,4 @@
-import { SET_CURRENT_DAY } from '../actions';
+import { SET_CURRENT_DATE } from '../actions';
 
 export default function (state = Date.now(), action) {
   // check to see if errors exist within our action, return if so
@@ -7,7 +7,7 @@ export default function (state = Date.now(), action) {
   }
 
   switch (action.type) {
-    case SET_CURRENT_DAY:
+    case SET_CURRENT_DATE:
       return action.payload
     default:
       return state;
