@@ -36,12 +36,60 @@
   color: #c5b7b7;
 }
 
+.calendar {
+  color: #5285f1;
+  padding-bottom: 2rem;
+}
+
+.calendar table {
+  border-radius: 3%;
+  border: solid black 1px;
+  -webkit-box-shadow: 2px whitesmoke;
+          box-shadow: 2px whitesmoke;
+}
+
+.calendar_header {
+  border-radius: 20%;
+  border: solid black 2px;
+}
+
+.calendar_header_weekday {
+  width: 14.28571%;
+  background-color: none;
+}
+
+.calendar_day {
+  height: 16.66667%;
+  padding: 0.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.calendar_day:hover {
+  color: white;
+  background-color: #5285f1;
+  border-radius: 100%;
+}
+
+.today {
+  color: coral;
+  border: 1px solid coral;
+  border-radius: 100%;
+}
+
+.empty {
+  background-color: slategray;
+}
+
 body {
   background: #c5b7b7;
   color: set-text-color(#c5b7b7);
   height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .text-secondary {

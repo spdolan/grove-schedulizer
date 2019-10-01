@@ -1,6 +1,7 @@
+import moment from 'moment';
 import { SET_CURRENT_DATE } from '../actions';
-
-export default function (state = Date.now(), action) {
+const default_date = moment().tz("America/New_York");
+export default function (state = default_date, action) {
   // check to see if errors exist within our action, return if so
   if (action.error) {
     return (action.error);

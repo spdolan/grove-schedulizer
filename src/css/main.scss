@@ -1,5 +1,6 @@
 @import 'config';
 @import 'dayStructured';
+@import 'calendar';
 
 body {
   background: $primary-color;
@@ -7,6 +8,7 @@ body {
   height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1;
+  align-items: center;
 }
 
 .text-secondary {

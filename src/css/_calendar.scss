@@ -1,0 +1,43 @@
+.calendar{
+  color: $secondary-color;
+  padding-bottom: 2rem;
+
+  table{
+    border-radius: 3%;
+    border: solid black 1px;
+    box-shadow: 2px whitesmoke;
+  }
+
+  &_header{
+    border-radius: 20%;
+    border: solid black 2px;
+
+    &_weekday {
+      width: (100%/7);
+      background-color: none;
+    }
+  }
+
+  &_day{
+    height: (100%/6);
+    padding: 0.5rem;
+    margin: 0;
+    text-align: center;
+
+    &:hover{
+      color: white;
+      background-color: $secondary-color;
+      border-radius: 100%;
+    }
+  }
+}
+
+.today{
+  color: coral;
+  border: 1px solid coral;
+  border-radius: 100%;
+}
+
+.empty{
+  background-color: slategray;
+}

@@ -8,7 +8,7 @@ class DayStructured extends React.Component {
     super(props);
     this.state = {
       hours: [...Array(23).keys()].map(x => x+1)
-    }
+    };
     this.renderHourLines = this.renderHourLines.bind(this);  
   }
 
