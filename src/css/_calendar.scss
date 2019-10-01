@@ -1,11 +1,19 @@
 .calendar{
   color: $secondary-color;
   padding-bottom: 2rem;
+  margin: auto;
+  align-content: center;
+  text-align: center;
+
+  &_banner{
+    
+  }
 
   table{
     border-radius: 3%;
     border: solid slategray 1px;
-    box-shadow: 3px 3px 2px black;
+    box-shadow: 3px 3px 3px black;
+    display: inline-block;
   }
 
   &_header{
@@ -37,9 +45,8 @@
   color: coral;
   border: 1px solid coral;
   border-radius: 100%;
-  box-shadow: 2px 2px 1px black;
 }
 
 .empty{
-  background-color: slategray;
+  
 }

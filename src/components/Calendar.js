@@ -58,7 +58,7 @@ class Calendar extends React.Component {
     const blanksDaysCurrentMonth = [];
     const currentMonthFirstDay = this.firstDayOfMonth();
     for (let i = 0; i < currentMonthFirstDay; i++){
-      blanksDaysCurrentMonth.push(<td className='calendar_day empty'>{''}</td>)
+      blanksDaysCurrentMonth.push(<td className='calendar_day empty' key={`e${i}`}>{''}</td>)
     }
     return blanksDaysCurrentMonth;
   }
@@ -69,14 +69,16 @@ class Calendar extends React.Component {
     const currentDate = this.getCurrentDateDayNumber();
     const daysForCurrentMonth = [];
     for (let day = 1; day <= numberOfDaysCurrentMonth; day++) {
-      let isToday = day == currentDate ? 'today' : ''; 
+      let isToday = day === +currentDate ? 'today' : ''; 
       daysForCurrentMonth.push(
-        <td className={`calendar_day ${isToday}`} key={day}>
-          <span 
-            onClick={e => {
-              this.onDayClick(day);
-            }}
-          >{day}</span>
+        <td 
+          className={`calendar_day ${isToday}`} 
+          key={`d${day}`}
+          onClick={e => {
+            this.onDayClick(day);
+          }}
+        >
+          <span>{day}</span>
         </td>)
     }
     return daysForCurrentMonth;
@@ -101,8 +103,8 @@ class Calendar extends React.Component {
         cells.push(row);
       }
     })
-    const monthDays = rows.map(row => {
-      return <tr>{row}</tr>
+    const monthDays = rows.map((row,i) => {
+      return <tr key={`r${i}`}>{row}</tr>
     });
     return monthDays;
   }
@@ -110,7 +112,7 @@ class Calendar extends React.Component {
   weekDaysShortName(){
     return moment.weekdaysShort().map(day => {
       return(
-        <th className='calendar_header_weekday' key={day}>
+        <th className='calendar_header_weekday' key={`th${day}`}>
           {day}
         </th>
       )
@@ -120,7 +122,9 @@ class Calendar extends React.Component {
   render() {
     return (
       <div className='calendar'>
-        <h2>{this.props.currentDate.format("MMMM YYYY")}</h2>
+        <h2 className='calendar_banner'>
+          {this.props.currentDate.format("MMMM YYYY")}
+        </h2>
         <table>
           <thead>
             <tr className='calendar_header'>

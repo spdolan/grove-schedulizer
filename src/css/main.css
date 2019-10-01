@@ -9,7 +9,8 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .dayStructured_hour {
@@ -39,13 +40,18 @@
 .calendar {
   color: #5285f1;
   padding-bottom: 2rem;
+  margin: auto;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
 }
 
 .calendar table {
   border-radius: 3%;
   border: solid slategray 1px;
-  -webkit-box-shadow: 3px 3px 2px black;
-          box-shadow: 3px 3px 2px black;
+  -webkit-box-shadow: 3px 3px 3px black;
+          box-shadow: 3px 3px 3px black;
+  display: inline-block;
 }
 
 .calendar_header {
@@ -77,12 +83,6 @@
   color: coral;
   border: 1px solid coral;
   border-radius: 100%;
-  -webkit-box-shadow: 2px 2px 1px black;
-          box-shadow: 2px 2px 1px black;
-}
-
-.empty {
-  background-color: slategray;
 }
 
 body {

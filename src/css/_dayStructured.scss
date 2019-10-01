@@ -4,7 +4,8 @@
   height: 30vh;
   align-items: center;
   flex-flow: column;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   &_hour{
     z-index: 0;
