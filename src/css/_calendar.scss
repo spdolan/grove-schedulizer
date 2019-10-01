@@ -4,8 +4,8 @@
 
   table{
     border-radius: 3%;
-    border: solid black 1px;
-    box-shadow: 2px whitesmoke;
+    border: solid slategray 1px;
+    box-shadow: 3px 3px 2px black;
   }
 
   &_header{
@@ -28,6 +28,7 @@
       color: white;
       background-color: $secondary-color;
       border-radius: 100%;
+      box-shadow: 2px 2px 1px black;
     }
   }
 }
@@ -36,6 +37,7 @@
   color: coral;
   border: 1px solid coral;
   border-radius: 100%;
+  box-shadow: 2px 2px 1px black;
 }
 
 .empty{

@@ -7,6 +7,7 @@ class DayStructured extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // use an array to create our hour lines - both midnights implied
       hours: [...Array(23).keys()].map(x => x+1)
     };
     this.renderHourLines = this.renderHourLines.bind(this);  
@@ -37,7 +38,8 @@ class DayStructured extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    currentDate: state.currentDate
   };
 }
 

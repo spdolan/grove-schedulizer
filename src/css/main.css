@@ -43,9 +43,9 @@
 
 .calendar table {
   border-radius: 3%;
-  border: solid black 1px;
-  -webkit-box-shadow: 2px whitesmoke;
-          box-shadow: 2px whitesmoke;
+  border: solid slategray 1px;
+  -webkit-box-shadow: 3px 3px 2px black;
+          box-shadow: 3px 3px 2px black;
 }
 
 .calendar_header {
@@ -69,12 +69,16 @@
   color: white;
   background-color: #5285f1;
   border-radius: 100%;
+  -webkit-box-shadow: 2px 2px 1px black;
+          box-shadow: 2px 2px 1px black;
 }
 
 .today {
   color: coral;
   border: 1px solid coral;
   border-radius: 100%;
+  -webkit-box-shadow: 2px 2px 1px black;
+          box-shadow: 2px 2px 1px black;
 }
 
 .empty {
