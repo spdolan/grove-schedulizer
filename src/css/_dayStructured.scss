@@ -1,7 +1,7 @@
 .dayStructured{
   background-color: azure;
   padding:  2rem;
-  height: 30vh;
+  height: $day-schedule-height;
   align-items: center;
   flex-flow: column;
   overflow-y: scroll;
@@ -9,7 +9,7 @@
 
   &_hour{
     z-index: 0;
-    padding: 1rem 0;
+    position: relative;
     margin: 0;
     display: flex;
     flex-flow: row wrap;
@@ -27,8 +27,49 @@
   }
 }
 
-// @for $i from 1 to 24 {
-//   .dayStructured_hour:nth-child(#{$i}){
-//     top: ($i * 10%);
-//   }
-// }
+.task{
+  &Color_{
+    &_0{
+      background-color: $task-color-0;
+    }
+    &_1{
+      background-color: $task-color-1;
+    }
+    &_2{
+      background-color: $task-color-2;
+    }
+    &_3{
+      background-color: $task-color-3;
+    }
+    &_4{
+      background-color: $task-color-4;
+    }
+    &_5{
+      background-color: $task-color-5;
+    }
+    &_6{
+      background-color: $task-color-6;
+    }
+  }
+
+  &_Duration_{
+    &_0.25{
+      height: 0.25 * $day-hour-offset;
+    }
+    &_1{
+      height: 1 * $day-hour-offset;
+    }
+    &_5{
+      height: 5 * $day-hour-offset;
+    }
+  }
+}
+
+@for $i from 1 to 24 {
+  .dayStructured_hour:nth-child(#{$i}){
+    top: ($i * $day-hour-offset);
+    @if $i==23 {
+      padding-bottom: $day-hour-offset;
+    }
+  }
+}

@@ -10,7 +10,8 @@ class DayStructured extends React.Component {
       // use an array to create our hour lines - both midnights implied
       hours: [...Array(23).keys()].map(x => x+1)
     };
-    this.renderHourLines = this.renderHourLines.bind(this);  
+    this.renderHourLines = this.renderHourLines.bind(this);
+    this.renderTasks = this.renderTasks.bind(this);  
   }
 
   componentDidMount(){    
@@ -27,10 +28,36 @@ class DayStructured extends React.Component {
     });
   }
 
+  renderTasks(){
+    let formattedCurrentDate = '';
+    if (this.props.currentDate._a){
+      const formattedCurrentMonth = (this.props.currentDate._a[1] + 1) < 10 ?
+        `0${(this.props.currentDate._a[1] + 1)}` :
+        (this.props.currentDate._a[1] + 1);
+      const formattedCurrentDay = (this.props.currentDate._a[2]) < 10 ?
+        `0${(this.props.currentDate._a[2])}` :
+        (this.props.currentDate._a[2]);
+      formattedCurrentDate = `${formattedCurrentMonth}/${formattedCurrentDay}/${this.props.currentDate._a[0]}`
+    } else {
+      formattedCurrentDate = this.props.currentDate.format("MM/DD/YYYY");
+    }
+    
+    console.log(formattedCurrentDate);
+    console.log(this.props.calendar[formattedCurrentDate]);
+    const currentDayTasks = this.props.calendar[formattedCurrentDate];
+    if(currentDayTasks.length > 0){
+      const formattedTaskDivs = currentDayTasks.map(taskObject => {
+        const taskClasses = `task_Color_${taskObject.id} task_Duration_${taskObject.taskDuration}`
+      });  
+    }
+      
+  }
+
   render(){
     return(
       <div className='dayStructured'>
         {this.renderHourLines()}
+        {this.renderTasks()}
       </div>
     )
   }
@@ -39,7 +66,8 @@ class DayStructured extends React.Component {
 function mapStateToProps(state) {
   return {
     tasks: state.tasks,
-    currentDate: state.currentDate
+    currentDate: state.currentDate,
+    calendar: state.calendar
   };
 }
 

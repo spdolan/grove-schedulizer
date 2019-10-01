@@ -2,8 +2,8 @@ const parser = require('cron-parser');
 
 // time boxing our calendar for the app - these could be .env values
 const options = {
-  currentDate: '2019-07-04 00:00:01',
-  endDate: '2020-07-04 23:59:59',
+  currentDate: '2019-10-01 00:00:00',
+  endDate: '2019-10-31 23:59:59',
   tz: 'America/New_York',
   iterator: true
 };
@@ -14,13 +14,13 @@ const addDatesToCalendarFromCron = (tasksArray, currentCalendarObject) => {
     const updatedCalendarObject = currentCalendarObject;
     // loop over each task
     tasksArray.forEach(taskObject => {
-      // extract our cron string from each taskObject
-      const taskObjectId = taskObject.id;
-      const taskCronString = taskObject.attributes.cron;
-      const taskObjectName = taskObject.attributes.name;
+      // extract task ID and Duration from each taskObject
+      const { id, duration} = taskObject;
+      // extract our cron string and task name from each taskObject
+      const { cron, name } = taskObject.attributes;   
       
       try {
-        const interval = parser.parseExpression(taskCronString, options);
+        const interval = parser.parseExpression(cron, options);
         // boolean is from the library's interval.next().done property
         while (options.iterator) {
           try {
@@ -28,9 +28,10 @@ const addDatesToCalendarFromCron = (tasksArray, currentCalendarObject) => {
             // console.log(obj.value);
             // TODO: check actual getter within Moment library
             updatedCalendarObject[obj.value._date.format('L')].push({
-              'taskId': taskObjectId,
-              'taskName': taskObjectName,
-              'taskDateTime':obj.value.toString()
+              'taskId': id,
+              'taskName': name,
+              'taskDateTime':obj.value.toString(),
+              'taskDuration': duration
             });
           } catch (error) {
             break;

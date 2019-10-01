@@ -7,9 +7,6 @@ import moment from 'moment';
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
     // this plethora of bindings is why Dan Abramov created Hooks/Context API,
     // which the developer will endeavor to improve themself by learning.
     this.weekDaysShortName = this.weekDaysShortName.bind(this);
@@ -20,10 +17,6 @@ class Calendar extends React.Component {
     this.createCalendarTable = this.createCalendarTable.bind(this);
     this.getCurrentDateDayNumber = this.getCurrentDateDayNumber.bind(this);
     this.onDayClick = this.onDayClick.bind(this);
-  }
-
-  componentDidMount() {
-    
   }
 
   daysInCurrentMonth(){
@@ -87,6 +80,7 @@ class Calendar extends React.Component {
   createCalendarTable(){
     const blanks = this.createBlankDays();
     const daysInMonth = this.createDays();
+    // destructure our blanks and actual days within the month to create a table
     const totalDays = [...blanks, ...daysInMonth];
     let rows = [];
     let cells = [];
