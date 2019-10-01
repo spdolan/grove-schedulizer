@@ -1,3 +1,4 @@
+import moment from 'moment-timezone';
 // import our relevant services
 import getTasksData from '../services/getTasksData';
 import addDatesToCalendarFromCron from '../services/addDatesToCalendarFromCron';
@@ -24,11 +25,17 @@ export const getTasks = () => dispatch => {
 
 export const updateCalendarFromTasksCron = (currentTaskList, currentCalendar) => dispatch => {
   addDatesToCalendarFromCron(currentTaskList, currentCalendar)
-    .then((response) => {
-      //service to update tasks array with parsed Cron interval
-      dispatch({ type: UPDATE_CALENDAR, payload: response });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  .then((response) => {
+    //service to update tasks array with parsed Cron interval
+    dispatch({ type: UPDATE_CALENDAR, payload: response });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
+
+export const setCurrentDateFromCalendar = (dateString) => dispatch => {
+  // if selected date is current date, we will keep the current time
+  const updatedCurrentDate = dateString != moment().format("MM/DD/YYYY") ? moment(dateString, 'MM/DD/YYYY') : moment();
+  dispatch({type: SET_CURRENT_DATE, payload: updatedCurrentDate});
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { } from '../actions';
+import { setCurrentDateFromCalendar } from '../actions';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import moment from 'moment';
@@ -10,13 +10,16 @@ class Calendar extends React.Component {
     this.state = {
       
     };
+    // this plethora of bindings is why Dan Abramov created Hooks/Context API,
+    // which the developer will endeavor to improve themself by learning.
     this.weekDaysShortName = this.weekDaysShortName.bind(this);
     this.firstDayOfMonth = this.firstDayOfMonth.bind(this);
     this.createBlankDays = this.createBlankDays.bind(this);
     this.createDays = this.createDays.bind(this);
     this.daysInCurrentMonth = this.daysInCurrentMonth.bind(this);
     this.createCalendarTable = this.createCalendarTable.bind(this);
-    this.currentDay = this.currentDay.bind(this);
+    this.getCurrentDateDayNumber = this.getCurrentDateDayNumber.bind(this);
+    this.onDayClick = this.onDayClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,13 +32,28 @@ class Calendar extends React.Component {
 
   firstDayOfMonth(){
     return this.props.currentDate.startOf('month').format('d');
-    
   }
 
-  currentDay(){
-    return this.props.currentDate.format('D');
+  getCurrentDateDayNumber(){
+    // our selected non-present date does not have specific time, 
+    // so we check for internal date property
+    const currentDate = this.props.currentDate._a ? 
+      this.props.currentDate._a[2] :
+      this.props.currentDate.format('D');
+    return currentDate;
   }
 
+  onDayClick(day){
+    // we are prefixing a zero for dates that are less than 10
+    const dayNumeric = day < 10 ? `0${day}` : day;
+    const monthNumeric = (this.props.currentDate.get('month')+1);
+    const yearNumeric = this.props.currentDate.get('year');
+    // interpolating our new date
+    const updatedDayString = `${monthNumeric}/${dayNumeric}/${yearNumeric}`;
+    this.props.setCurrentDateFromCalendar(updatedDayString);
+  }
+
+  // adding in our first blank days, if a month does not begin on a Sunday
   createBlankDays(){
     const blanksDaysCurrentMonth = [];
     const currentMonthFirstDay = this.firstDayOfMonth();
@@ -46,11 +64,20 @@ class Calendar extends React.Component {
   }
 
   createDays(){
+    // grab total number of days within our month
     const numberOfDaysCurrentMonth = this.daysInCurrentMonth();
+    const currentDate = this.getCurrentDateDayNumber();
     const daysForCurrentMonth = [];
     for (let day = 1; day <= numberOfDaysCurrentMonth; day++) {
-      let currentDay = day == this.currentDay() ? 'today' : ''; 
-      daysForCurrentMonth.push(<td className={`calendar_day ${currentDay}`} key={day}>{day}</td>)
+      let isToday = day == currentDate ? 'today' : ''; 
+      daysForCurrentMonth.push(
+        <td className={`calendar_day ${isToday}`} key={day}>
+          <span 
+            onClick={e => {
+              this.onDayClick(day);
+            }}
+          >{day}</span>
+        </td>)
     }
     return daysForCurrentMonth;
   }
@@ -74,11 +101,9 @@ class Calendar extends React.Component {
         cells.push(row);
       }
     })
-
     const monthDays = rows.map(row => {
       return <tr>{row}</tr>
-    })
-
+    });
     return monthDays;
   }
 
@@ -118,7 +143,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setCurrentDateFromCalendar }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
