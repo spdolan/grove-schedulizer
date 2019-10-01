@@ -11,7 +11,8 @@ class DayStructured extends React.Component {
       hours: [...Array(23).keys()].map(x => x+1)
     };
     this.renderHourLines = this.renderHourLines.bind(this);
-    this.renderTasks = this.renderTasks.bind(this);  
+    this.renderTasks = this.renderTasks.bind(this); 
+    this.formatCurrentDate = this.formatCurrentDate.bind(this); 
   }
 
   componentDidMount(){    
@@ -28,23 +29,29 @@ class DayStructured extends React.Component {
     });
   }
 
-  renderTasks(){
+  formatCurrentDate(momentDayObject){
     let formattedCurrentDate = '';
-    if (this.props.currentDate._a){
-      const formattedCurrentMonth = (this.props.currentDate._a[1] + 1) < 10 ?
-        `0${(this.props.currentDate._a[1] + 1)}` :
-        (this.props.currentDate._a[1] + 1);
-      const formattedCurrentDay = (this.props.currentDate._a[2]) < 10 ?
-        `0${(this.props.currentDate._a[2])}` :
-        (this.props.currentDate._a[2]);
-      formattedCurrentDate = `${formattedCurrentMonth}/${formattedCurrentDay}/${this.props.currentDate._a[0]}`
+    if (momentDayObject._a) {
+      const formattedCurrentMonth = (momentDayObject._a[1] + 1) < 10 ?
+        `0${(momentDayObject._a[1] + 1)}` :
+        (momentDayObject._a[1] + 1);
+      const formattedCurrentDay = (momentDayObject._a[2]) < 10 ?
+        `0${(momentDayObject._a[2])}` :
+        (momentDayObject._a[2]);
+      formattedCurrentDate = `${formattedCurrentMonth}/${formattedCurrentDay}/${momentDayObject._a[0]}`
     } else {
-      formattedCurrentDate = this.props.currentDate.format("MM/DD/YYYY");
+      formattedCurrentDate = momentDayObject.format("MM/DD/YYYY");
     }
+
+    return formattedCurrentDate;
+  }
+
+  renderTasks(){
     
-    console.log(formattedCurrentDate);
-    console.log(this.props.calendar[formattedCurrentDate]);
-    const currentDayTasks = this.props.calendar[formattedCurrentDate];
+    const formattedDate = this.formatCurrentDate(this.props.currentDate);
+    console.log(formattedDate);
+    console.log(this.props.calendar[formattedDate]);
+    const currentDayTasks = this.props.calendar[formattedDate];
     if(currentDayTasks.length > 0){
       const formattedTaskDivs = currentDayTasks.map(taskObject => {
         const taskClasses = `task_Color_${taskObject.id} task_Duration_${taskObject.taskDuration}`
