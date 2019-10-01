@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAndConvertTasks } from '../actions';
+import { } from '../actions';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -12,10 +12,7 @@ class DayStructured extends React.Component {
     this.renderHourLines = this.renderHourLines.bind(this);  
   }
 
-  componentDidMount(){
-    this.props.getAndConvertTasks();
-    // const hoursArray = [...Array.from(23).keys()].map(i => i++)
-    // this.setState({ hours: hoursArray})
+  componentDidMount(){    
   }
 
   renderHourLines(){
@@ -45,7 +42,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getAndConvertTasks}, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DayStructured);

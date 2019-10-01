@@ -8,19 +8,19 @@ import rootReducer from "./reducers/index";
 
 import './css/main.css';
 
-// import Day from './views/Day';
+import App from './components/App';
 import DayStructured from './components/DayStructured';
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    < BrowserRouter>
+    <BrowserRouter>
       <Switch>
-        <Route path="/" component={DayStructured} />
+        <Route path="/" component={App} />
         <Redirect to='/' />
       </Switch>
-    </ BrowserRouter>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
