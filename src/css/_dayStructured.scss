@@ -34,6 +34,13 @@
       }
     }
 
+    &_tasks{
+      &_1200{
+        display: flex;
+        flex-flow: row;
+      }
+    }
+
   }
 }
 
@@ -93,13 +100,8 @@
   }
 }
 
-// @for $i from 1 to 24 {
-//   .dayStructured_hour:nth-of-type(#{$i}){
-//     top: ($i * $day-hour-offset);
-//   }
-
-//   .task_Start_#{set-timeValue($i)}{
-//     top: ($i * $day-hour-offset);
-//   }
-
-// }
+@for $i from 0 to 24 {
+  .dayStructured_hour_tasks_#{set-timeValue($i)}{
+    height: 100%;
+  }
+}

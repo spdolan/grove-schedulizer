@@ -45,6 +45,16 @@
   margin-bottom: 0;
 }
 
+.dayStructured_hour_tasks_1200 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+}
+
 .task {
   z-index: 2;
   position: relative;
@@ -96,6 +106,102 @@
 
 .task_Duration_5 {
   height: 500%;
+}
+
+.dayStructured_hour_tasks_0000 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0100 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0200 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0300 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0400 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0500 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0600 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0700 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0800 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_0900 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1000 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1100 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1200 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1300 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1400 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1500 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1600 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1700 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1800 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_1900 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_2000 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_2100 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_2200 {
+  height: 100%;
+}
+
+.dayStructured_hour_tasks_2300 {
+  height: 100%;
 }
 
 .calendar {

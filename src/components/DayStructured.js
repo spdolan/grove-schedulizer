@@ -52,7 +52,7 @@ class DayStructured extends React.Component {
     const taskHourTimes = taskHours.filter(taskHour => {
       return taskHour % 100 === 0;
     });
-    const uniqueHourTimes = new Set(taskHourTimes)
+    const uniqueHourTimes = new Set(taskHourTimes);
     return Array.from(uniqueHourTimes);
   }
 
@@ -89,7 +89,9 @@ class DayStructured extends React.Component {
         const currentHourDiv = 
           <div className='dayStructured_hour' key={taskHour}>
             <span className='dayStructured_hour_marker'><span className='dayStructured_hour_marker_text'>{taskHour}</span> <hr></hr></span>
-            {currentTasksDiv}
+            <div className={`dayStructured_hour_tasks_${taskHour}`}>
+              {currentTasksDiv}
+            </div>
           </div>
         return currentHourDiv;
       });
