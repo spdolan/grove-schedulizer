@@ -117,7 +117,7 @@ class Calendar extends React.Component {
     return (
       <div className='calendar'>
         <h2 className='calendar_banner'>
-          {this.props.currentDate.format("MMMM YYYY")}
+          Select Schedule for a Day in {this.props.currentDate.format("MMMM YYYY")}
         </h2>
         <table>
           <thead>

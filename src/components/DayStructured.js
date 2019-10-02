@@ -3,16 +3,11 @@ import { } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Notifier from './Notifier';
+import Notifier from './Notifier1';
 
 class DayStructured extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // use an array to create our hour lines - both midnights implied
-      hours: [...Array(23).keys()].map(x => x+1)
-    };
-
     this.renderTasks = this.renderTasks.bind(this); 
     this.formatCurrentDate = this.formatCurrentDate.bind(this);
     this.sortCurrentDayTasks = this.sortCurrentDayTasks.bind(this);
@@ -21,21 +16,22 @@ class DayStructured extends React.Component {
     this.grabTasksForHour = this.grabTasksForHour.bind(this);
     this.formatTasksToDiv = this.formatTasksToDiv.bind(this);
   }
-
-  componentDidMount(){    
-  }
-
+  // return a string formatted MM/DD/YYYY based on our currentDate store property
   formatCurrentDate(momentDayObject){
     let formattedCurrentDate = '';
     if (momentDayObject._a) {
+      // check if Moment's zero-based months are before October, and prepend a 0
       const formattedCurrentMonth = (momentDayObject._a[1] + 1) < 10 ?
         `0${(momentDayObject._a[1] + 1)}` :
         (momentDayObject._a[1] + 1);
+      // check if current date is before the 10th, and prepend a 0
       const formattedCurrentDay = (momentDayObject._a[2]) < 10 ?
         `0${(momentDayObject._a[2])}` :
         (momentDayObject._a[2]);
+      // interpolate our formatted Month/Day/Year
       formattedCurrentDate = `${formattedCurrentMonth}/${formattedCurrentDay}/${momentDayObject._a[0]}`
     } else {
+      // no need to parse if the current day is a non-parsed MomentJS object
       formattedCurrentDate = momentDayObject.format("MM/DD/YYYY");
     }
     return formattedCurrentDate;
@@ -49,6 +45,7 @@ class DayStructured extends React.Component {
 
   grabTaskHoursFromCurrentDayObject(arrayOfTaskObjects){
     const taskHours = arrayOfTaskObjects.map(taskObject => taskObject.taskStartTime); 
+    // grab only on-the-hour times (XX00)
     const taskHourTimes = taskHours.filter(taskHour => {
       return taskHour % 100 === 0;
     });
@@ -66,27 +63,32 @@ class DayStructured extends React.Component {
     })
   }
 
+  // create a div within relevant class names based upon the task
   formatTasksToDiv(arrayOfTasks){
     const arrayOfTaskDivs = [];
     arrayOfTasks.forEach(taskObject => {
       const { taskId, taskDuration, taskStartTime, taskName } = taskObject;
       const taskClasses = `task task_Color_${taskId} task_Duration_${taskDuration}`;
       if (taskName === "Farmer's Market" && taskStartTime === '0000') {
-        arrayOfTaskDivs.push(<div className={taskClasses}>{taskName}</div>);
+        arrayOfTaskDivs.push(<div className={taskClasses} key={`${taskId}-${taskStartTime}`}>{taskName}</div>);
       }
       else if (taskStartTime > '0400') {
-        arrayOfTaskDivs.push(<div className={`${taskClasses} task_Start_${taskStartTime}`}>{taskName}</div>);
+        arrayOfTaskDivs.push(<div className={`${taskClasses} task_Start_${taskStartTime}`} key={`${taskId}-${taskStartTime}`}>{taskName}</div>);
       }
     });
     return arrayOfTaskDivs;
   }
 
   renderTasks(){
+    // format our date then grab tasks from our calendar object
     const formattedDate = this.formatCurrentDate(this.props.currentDate);
     const currentDayTasks = this.props.calendar[formattedDate];
+    // if our current day actually has tasks, proceed with formatting/displaying
     if(currentDayTasks.length > 0){
+      // sort our current day tasks by time started
       const sortedCurrentDayTasks = this.sortCurrentDayTasks(currentDayTasks);
       const currentDayHoursWithTasks = this.grabTaskHoursFromCurrentDayObject(sortedCurrentDayTasks);
+      // map over each applicable hour, and place each task within that Hour's div
       const formattedTaskDivs = currentDayHoursWithTasks.map(taskHour => {
         const tasksForCurrentHour = this.grabTasksForHour(taskHour, sortedCurrentDayTasks);
         const currentTasksDiv = this.formatTasksToDiv(tasksForCurrentHour);
@@ -109,20 +111,11 @@ class DayStructured extends React.Component {
   render(){
     const formattedDate = this.formatCurrentDate(this.props.currentDate);
     return(
-      <>
-        <div className='dayStructured'>
-          <h3>Schedule for {formattedDate}</h3>
-          <Notifier />
-          <button 
-            onClick={e => {
-              e.preventDefault();
-            }}>
-              Please notify me!
-          </button>
-          {this.renderTasks()}
-        </div>
-        
-      </>
+      <div className='dayStructured'>
+        <h3>Schedule for {formattedDate}</h3>
+        <Notifier />
+        {this.renderTasks()}
+      </div>
     )
   }
 }
