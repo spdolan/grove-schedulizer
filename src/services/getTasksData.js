@@ -1,9 +1,7 @@
 import axios from 'axios';
-import data from '../data/tasks.json';
 
 const getTasksData = () => {
 
-  // const tasksData = data;
   const tasksData = axios.get(`https://scheduler-challenge.grove.co/`);
 
   // let's put in an error checker here
