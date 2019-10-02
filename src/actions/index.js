@@ -38,7 +38,8 @@ export const updateCalendarFromTasksCron = (currentTaskList, currentCalendar) =>
 
 export const setCurrentDateFromCalendar = (dateString) => dispatch => {
   // if selected date is current date, we will keep the current time
-  const updatedCurrentDate = dateString !== moment().format("MM/DD/YYYY") ? moment(dateString, 'MM/DD/YYYY') : moment();
+  console.log(dateString, moment().format("MM/DD/YYYY"));
+  const updatedCurrentDate = dateString !== moment().format("MM/DD/YYYY") ? moment(dateString, 'MM/DD/YYYY') : moment(new Date());
   dispatch({type: SET_CURRENT_DATE, payload: updatedCurrentDate});
 }
 

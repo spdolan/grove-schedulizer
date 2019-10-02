@@ -3,7 +3,7 @@ import { } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Notifier from './Notifier1';
+import Notifier from './Notifier';
 
 class DayStructured extends React.Component {
   constructor(props) {

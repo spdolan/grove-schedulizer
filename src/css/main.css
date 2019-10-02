@@ -58,6 +58,8 @@
 .task {
   z-index: 2;
   position: relative;
+  text-align: center;
+  vertical-align: middle;
   width: 90%;
   margin-left: 3.5rem;
   color: black;

@@ -30,9 +30,10 @@ class Calendar extends React.Component {
   getCurrentDateDayNumber(){
     // our selected non-present date does not have specific time, 
     // so we check for internal date property
+    // const splitCurrentDate = this.props.currentDate._i.split(' ')
     const currentDate = this.props.currentDate._a ? 
       this.props.currentDate._a[2] :
-      this.props.currentDate.format('D');
+      this.props.currentDate._i.getDate();
     return currentDate;
   }
 
