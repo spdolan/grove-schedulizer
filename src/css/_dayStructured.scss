@@ -12,43 +12,39 @@
     z-index: 0;
     position: relative;
     margin: 0;
-    display: flex;
-    flex-flow: row wrap;
+    
     color: black;
+    height: $day-hour-offset;
     width: 100%;
 
-    &_text{
+    &_marker{
+      display: flex;
+      flex-flow: row wrap;
+
+      &_text{
+      height: 1rem;
       width: 2rem;
+      }
+
+      hr {
+        height: 2px;
+        width: 90%;
+        color: $primary-color;
+        margin-bottom: 0;
+      }
     }
 
-    hr {
-      width: 90%;
-      color: $primary-color;
-      
-    }
   }
 }
 
-.task-test{
-  position: relative;
-  background-color: yellow;
-  width:75%;
-  height: 5rem;
-  top: -$day-schedule-height;
-  z-index: 4;
-}
-
 .task{
-
   z-index: 2;
   position: relative;
   width: 90%;
   margin-left: 3.5rem;
   color: black;
-  
   border-radius: 2%;
   
-
   &_Color{
     &_0{
       background-color: $task-color-0;
@@ -73,31 +69,18 @@
     }
   }
 
-  &_Start{
-    &_0715{
-      // top: (1 * $day-hour-offset);
-      top: $day-hour-offset * 2.25;
-      z-index: 2;
-    }
-    &_0730{
-      // top: (1 * $day-hour-offset);
-      top: $day-hour-offset * 2.5;
-      z-index: 2;
-    }
-  }  
-
   &_Duration{
     &_001{
       height: 0.01 * $day-hour-offset;
     }
     &_025{
-      height: 0.25 * $day-hour-offset;
+      height: 23%;
     }
     &_1{
-      height: 1 * $day-hour-offset;
+      height: 90%;
     }
     &_5{
-      height: 5 * $day-hour-offset;
+      height: 500%;
     }
   }
 }
@@ -110,13 +93,13 @@
   }
 }
 
-@for $i from 1 to 24 {
-  .dayStructured_hour:nth-of-type(#{$i}){
-    top: ($i * $day-hour-offset);
-  }
+// @for $i from 1 to 24 {
+//   .dayStructured_hour:nth-of-type(#{$i}){
+//     top: ($i * $day-hour-offset);
+//   }
 
-  .task_Start_#{set-timeValue($i)}{
-    top: ($i * $day-hour-offset);
-  }
+//   .task_Start_#{set-timeValue($i)}{
+//     top: ($i * $day-hour-offset);
+//   }
 
-}
+// }

@@ -49,9 +49,11 @@ class DayStructured extends React.Component {
 
   grabTaskHoursFromCurrentDayObject(arrayOfTaskObjects){
     const taskHours = arrayOfTaskObjects.map(taskObject => taskObject.taskStartTime); 
-    return taskHours.filter(taskHour => {
+    const taskHourTimes = taskHours.filter(taskHour => {
       return taskHour % 100 === 0;
     });
+    const uniqueHourTimes = new Set(taskHourTimes)
+    return Array.from(uniqueHourTimes);
   }
 
   hourOfTimeFormattedString(twentyFourHourTimeString){
@@ -84,8 +86,9 @@ class DayStructured extends React.Component {
           }
         });
 
-        const currentHourDiv = <div className='dayStructured_hour' key={taskHour}>
-          <span className='dayStructured_hour_text'>{taskHour}</span> <hr></hr>
+        const currentHourDiv = 
+          <div className='dayStructured_hour' key={taskHour}>
+            <span className='dayStructured_hour_marker'><span className='dayStructured_hour_marker_text'>{taskHour}</span> <hr></hr></span>
             {currentTasksDiv}
           </div>
         return currentHourDiv;
