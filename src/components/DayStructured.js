@@ -10,23 +10,12 @@ class DayStructured extends React.Component {
       // use an array to create our hour lines - both midnights implied
       hours: [...Array(23).keys()].map(x => x+1)
     };
-    this.renderHourLines = this.renderHourLines.bind(this);
+
     this.renderTasks = this.renderTasks.bind(this); 
     this.formatCurrentDate = this.formatCurrentDate.bind(this); 
   }
 
   componentDidMount(){    
-  }
-
-  renderHourLines(){
-    return this.state.hours.map(hour => {
-      return(
-        // the developer is not advocating for using values as keys here
-        <div className='dayStructured_hour' key={hour}>
-          <span className='dayStructured_hour_text'>{`${hour}:00`}</span> <hr></hr>
-        </div>
-      )
-    });
   }
 
   formatCurrentDate(momentDayObject){
@@ -56,15 +45,14 @@ class DayStructured extends React.Component {
       const formattedTaskDivs = sortedCurrentDayTasks.map((taskObject, i) => {
         const {taskId, taskDuration, taskStartTime, taskName} = taskObject;
         const taskClasses = `task task_Color_${taskId} task_Duration_${taskDuration}`;
-        if (taskStartTime % 100 === 0 && taskName === 'Stretch and get water' || taskStartTime % 100 === 0 && taskName === "Farmer's Market"){
+        if (taskStartTime % 100 === 0 && (taskName === 'Stretch and get water' || taskName === "Farmer's Market")){
           return (
             <div className='dayStructured_hour' key={taskStartTime}>
               <span className='dayStructured_hour_text'>{taskStartTime}</span> <hr></hr>
               <div className={taskClasses} key={`task-${i}`}>{taskName}</div>
             </div>
           );
-        } 
-               
+        }   
         else if (taskStartTime > '0600') {
           return (<div className={`${taskClasses} task_Start_${taskStartTime}`} key={`task-${i}`}>{taskName}</div>);
         }
