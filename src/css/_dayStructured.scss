@@ -3,6 +3,7 @@
   padding:  2rem;
   height: $day-schedule-height;
   align-items: center;
+  text-align: center;
   flex-flow: column;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -23,12 +24,32 @@
     hr {
       width: 90%;
       color: $primary-color;
+      
     }
   }
 }
 
+.task-test{
+  position: relative;
+  background-color: yellow;
+  width:75%;
+  height: 5rem;
+  top: -$day-schedule-height;
+  z-index: 4;
+}
+
 .task{
-  &Color_{
+
+  z-index: 2;
+  position: relative;
+  width: 90%;
+  margin-left: 3.5rem;
+  color: black;
+  
+  border-radius: 2%;
+  
+
+  &_Color{
     &_0{
       background-color: $task-color-0;
     }
@@ -52,8 +73,24 @@
     }
   }
 
-  &_Duration_{
-    &_0.25{
+  &_Start{
+    &_0715{
+      // top: (1 * $day-hour-offset);
+      top: $day-hour-offset * 2.25;
+      z-index: 2;
+    }
+    &_0730{
+      // top: (1 * $day-hour-offset);
+      top: $day-hour-offset * 2.5;
+      z-index: 2;
+    }
+  }  
+
+  &_Duration{
+    &_001{
+      height: 0.01 * $day-hour-offset;
+    }
+    &_025{
       height: 0.25 * $day-hour-offset;
     }
     &_1{
@@ -65,11 +102,21 @@
   }
 }
 
-@for $i from 1 to 24 {
-  .dayStructured_hour:nth-child(#{$i}){
-    top: ($i * $day-hour-offset);
-    @if $i==23 {
-      padding-bottom: $day-hour-offset;
-    }
+@function set-timeValue($iterator) {
+  @if ($iterator < 10) {
+    @return "0#{$iterator}00";
+  } @else {
+    @return "#{$iterator}00";
   }
+}
+
+@for $i from 1 to 24 {
+  .dayStructured_hour:nth-of-type(#{$i}){
+    top: ($i * $day-hour-offset);
+  }
+
+  .task_Start_#{set-timeValue($i)}{
+    top: ($i * $day-hour-offset);
+  }
+
 }

@@ -7,9 +7,7 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers/index";
 
 import './css/main.css';
-
 import App from './components/App';
-import DayStructured from './components/DayStructured';
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
 

@@ -42,30 +42,55 @@ class DayStructured extends React.Component {
     } else {
       formattedCurrentDate = momentDayObject.format("MM/DD/YYYY");
     }
-
     return formattedCurrentDate;
   }
 
   renderTasks(){
-    
     const formattedDate = this.formatCurrentDate(this.props.currentDate);
-    console.log(formattedDate);
     console.log(this.props.calendar[formattedDate]);
     const currentDayTasks = this.props.calendar[formattedDate];
     if(currentDayTasks.length > 0){
-      const formattedTaskDivs = currentDayTasks.map(taskObject => {
-        const taskClasses = `task_Color_${taskObject.id} task_Duration_${taskObject.taskDuration}`
-      });  
+      const sortedCurrentDayTasks = currentDayTasks.sort(function (a, b) {
+        return a.taskStartTime - b.taskStartTime;
+      })
+      const formattedTaskDivs = sortedCurrentDayTasks.map((taskObject, i) => {
+        const {taskId, taskDuration, taskStartTime, taskName} = taskObject;
+        const taskClasses = `task task_Color_${taskId} task_Duration_${taskDuration}`;
+        if (taskStartTime % 100 === 0 && taskName === 'Stretch and get water' || taskStartTime % 100 === 0 && taskName === "Farmer's Market"){
+          return (
+            <div className='dayStructured_hour' key={taskStartTime}>
+              <span className='dayStructured_hour_text'>{taskStartTime}</span> <hr></hr>
+              <div className={taskClasses} key={`task-${i}`}>{taskName}</div>
+            </div>
+          );
+        } 
+               
+        else if (taskStartTime > '0600') {
+          return (<div className={`${taskClasses} task_Start_${taskStartTime}`} key={`task-${i}`}>{taskName}</div>);
+        }
+      });
+      
+      return formattedTaskDivs;
     }
       
   }
 
   render(){
+    const formattedDate = this.formatCurrentDate(this.props.currentDate);
     return(
-      <div className='dayStructured'>
-        {this.renderHourLines()}
-        {this.renderTasks()}
-      </div>
+      <>
+        <div className='dayStructured'>
+          <h3>Schedule for {formattedDate}</h3>
+          <button 
+            onClick={e => {
+              e.preventDefault();
+            }}>
+              Please notify me!
+          </button>
+          {this.renderTasks()}
+        </div>
+        
+      </>
     )
   }
 }

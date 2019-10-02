@@ -6,10 +6,11 @@
   text-align: center;
 
   &_banner{
-    
+    color: black;
   }
 
   table{
+    background-color: white;
     border-radius: 3%;
     border: solid slategray 1px;
     box-shadow: 3px 3px 3px black;
@@ -17,6 +18,7 @@
   }
 
   &_header{
+    color: black;
     border-radius: 20%;
     border: solid black 2px;
 
@@ -35,6 +37,7 @@
     &:hover{
       color: white;
       background-color: $secondary-color;
+      cursor: pointer;
       border-radius: 100%;
       box-shadow: 2px 2px 1px black;
     }

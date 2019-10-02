@@ -3,7 +3,7 @@
     "browser": true,
     "es6": true,
     "jest": true,
-    "node": true
+    "node": true,
   },
   "extends": [
     "eslint:recommended",
@@ -18,7 +18,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "jsx"
   ],
   "settings": {
     "react": {

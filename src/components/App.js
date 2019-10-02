@@ -19,7 +19,6 @@ class App extends React.Component {
     if(this.props.tasks.length !== prevProps.tasks.length){
       this.props.updateCalendarFromTasksCron(this.props.tasks, this.props.calendar);
     }
-    
   }
 
   render() {

@@ -30,6 +30,7 @@ const addDatesToCalendarFromCron = (tasksArray, currentCalendarObject) => {
             updatedCalendarObject[obj.value._date.format('L')].push({
               'taskId': id,
               'taskName': name,
+              'taskStartTime': obj.value._date.format('HHmm'),
               'taskDateTime':obj.value.toString(),
               'taskDuration': duration
             });
