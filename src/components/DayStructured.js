@@ -14,7 +14,12 @@ class DayStructured extends React.Component {
     };
 
     this.renderTasks = this.renderTasks.bind(this); 
-    this.formatCurrentDate = this.formatCurrentDate.bind(this); 
+    this.formatCurrentDate = this.formatCurrentDate.bind(this);
+    this.sortCurrentDayTasks = this.sortCurrentDayTasks.bind(this);
+    this.grabTaskHoursFromCurrentDayObject = this.grabTaskHoursFromCurrentDayObject.bind(this);
+    this.hourOfTimeFormattedString = this.hourOfTimeFormattedString.bind(this);
+    this.grabTasksForHour = this.grabTasksForHour.bind(this);
+
   }
 
   componentDidMount(){    
