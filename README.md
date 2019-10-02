@@ -1,4 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<summary>Schedulizer for Grove Co.</summary> 
+  
+* This application takes tasks from Grove's task endpoint [https://scheduler-challenge.grove.co/] , and converts them into a viewable schedule.
+* The app currently only looks at the month of October 2019, but could be opened for any date range.
+* Schedulizer also will send browser Notifications if the user so desires, but the User must click the
+* 'Notify Me' button above the schedule for the day. Note: this will only notify the User for the 
+* current day's tasks (not the selected day).
+
+<details><summary>Getting Things Together</summary> 
+  
+* Navigate the root folder, run 'npm install' on your local machine for dependencies.
+
+</details>
+<details><summary>Getting Things Running</summary> 
+  
+* Within your terminal, after the above installations have run successfully: 
+  * run 'npm start' within the root folder, to start the React app (default to localhost:3000).
+
+
+</details>
+<details><summary>Once You're Running</summary> 
+  
+* Navigate to localhost:3000, and see what's happening for the day!
+* Click the 'Notify Me' button to receive browser notifications - if you browser supports them.
+  * These notifications will only run for the current day's tasks.
+  * You will still be able to view any future or past tasks - provided they are within October 2019.
+
+</details>
+
 
 ## Available Scripts
 
@@ -26,43 +54,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
