@@ -16,7 +16,7 @@ export const getTasks = () => dispatch => {
   getTasksData()
   .then((response) => {
     //service to update tasks array with duration in Hours
-    return addTaskDurationInHours(response.data);
+    return addTaskDurationInHours(response.data.data);
   })
   .then((response) => {
     dispatch({ type: GET_TASKS, payload: response });

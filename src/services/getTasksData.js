@@ -2,9 +2,9 @@ import axios from 'axios';
 import data from '../data/tasks.json';
 
 const getTasksData = () => {
-  // for offline use TODO: remove before submission
-  const tasksData = data;
-  // const tasksData = axios.get(`https://scheduler-challenge.grove.co/`);
+
+  // const tasksData = data;
+  const tasksData = axios.get(`https://scheduler-challenge.grove.co/`);
 
   // let's put in an error checker here
   if(tasksData.error){
