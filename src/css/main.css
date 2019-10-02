@@ -1,11 +1,19 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .dayStructured {
   background-color: azure;
   padding: 2rem;
   height: 50vh;
+  width: 75%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
+  margin: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -213,10 +221,12 @@
   -ms-flex-line-pack: center;
       align-content: center;
   text-align: center;
+  width: 60%;
 }
 
 .calendar_banner {
   color: black;
+  margin-bottom: 1rem;
 }
 
 .calendar table {
@@ -287,6 +297,24 @@
   height: 2rem;
 }
 
+@media screen and (min-width: 768px) {
+  .calendar {
+    width: 80%;
+  }
+  .dayStructured {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .calendar {
+    width: 70%;
+  }
+  .dayStructured {
+    width: 80%;
+  }
+}
+
 body {
   background: #c5b7b7;
   color: set-text-color(#c5b7b7);
@@ -296,6 +324,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
 }
 
 .text-secondary {

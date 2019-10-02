@@ -12,53 +12,26 @@ $task-color-4: rgba(204, 119, 50, 0.685);
 $task-color-5: rgba(233, 211, 17, 0.548);
 $task-color-6: rgba(204, 50, 50, 0.76);
 
-@function set-timeValue-placement($iterator){
-  @if $iterator == 1 {
-    // @return -130%;
-    @return -$day-schedule-height * 1.25;
-  } @else if $iterator == 2 {
-    @return -$day-schedule-height * 1.01;
-  }@else if $iterator == 3 {
-    @return -$day-schedule-height * .77;
-  }@else if $iterator == 4 {
-    @return -$day-schedule-height * .53;
-  }@else if $iterator == 5 {
-    @return -$day-schedule-height * .29;
-  } @else if $iterator == 6 {
-    @return -$day-schedule-height * .1;
-  }@else if $iterator == 7 {
-    @return $day-schedule-height * .09;
-  }@else if $iterator == 8 {
-    @return $day-schedule-height * .285;
-  }@else if $iterator == 9 {
-    @return $day-schedule-height * .475;
-  }@else if $iterator == 10 {
-    @return $day-schedule-height * .665;
-  }@else if $iterator == 11 {
-    @return $day-schedule-height * .855;
-  }@else if $iterator == 12 {
-    @return $day-schedule-height * 1.04;
-  }@else if $iterator == 13 {
-    @return $day-schedule-height * 1.63;
-  }@else if $iterator == 14 {
-    @return $day-schedule-height * 1.88;
-  }@else if $iterator == 15 {
-    @return $day-schedule-height * 2.12;
-  }@else if $iterator == 16 {
-    @return $day-schedule-height * 2.36;
-  }@else if $iterator == 17 {
-    @return $day-schedule-height * 2.60;
-  }@else if $iterator == 18 {
-    @return $day-schedule-height * 2.84;
-  }@else if $iterator == 19 {
-    @return $day-schedule-height * 3.02;
-  }@else if $iterator == 20 {
-    @return $day-schedule-height * 3.26;
-  }@else if $iterator == 21 {
-    @return $day-schedule-height * 3.50;
-  }@else if $iterator == 22 {
-    @return $day-schedule-height * 3.74;
-  }@else if $iterator == 23 {
-    @return $day-schedule-height * 3.98;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin media-md {
+  @media screen and (min-width: 768px){
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media screen and (min-width: 1024px){
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media screen and (min-width: 1600px){
+    @content;
   }
 }

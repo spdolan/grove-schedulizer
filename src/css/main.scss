@@ -2,6 +2,7 @@
 @import 'dayStructured';
 @import 'calendar';
 @import 'notifier';
+@import 'responsive';
 
 body {
   background: $primary-color;
@@ -10,6 +11,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1;
   align-items: center;
+  margin: auto;
 }
 
 .text-secondary {

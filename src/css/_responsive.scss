@@ -1,0 +1,19 @@
+@include media-md {
+  .calendar{
+    width: 80%;
+  }
+
+  .dayStructured{
+    width: 90%;
+  }
+}
+
+@include media-lg {
+  .calendar{
+    width: 70%;
+  }
+
+  .dayStructured{
+    width: 80%;
+  }
+}
