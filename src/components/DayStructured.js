@@ -19,7 +19,7 @@ class DayStructured extends React.Component {
     this.grabTaskHoursFromCurrentDayObject = this.grabTaskHoursFromCurrentDayObject.bind(this);
     this.hourOfTimeFormattedString = this.hourOfTimeFormattedString.bind(this);
     this.grabTasksForHour = this.grabTasksForHour.bind(this);
-
+    this.formatTasksToDiv = this.formatTasksToDiv.bind(this);
   }
 
   componentDidMount(){    
@@ -66,6 +66,21 @@ class DayStructured extends React.Component {
     })
   }
 
+  formatTasksToDiv(arrayOfTasks){
+    const arrayOfTaskDivs = [];
+    arrayOfTasks.forEach(taskObject => {
+      const { taskId, taskDuration, taskStartTime, taskName } = taskObject;
+      const taskClasses = `task task_Color_${taskId} task_Duration_${taskDuration}`;
+      if (taskName === "Farmer's Market" && taskStartTime === '0000') {
+        arrayOfTaskDivs.push(<div className={taskClasses}>{taskName}</div>);
+      }
+      else if (taskStartTime > '0400') {
+        arrayOfTaskDivs.push(<div className={`${taskClasses} task_Start_${taskStartTime}`}>{taskName}</div>);
+      }
+    });
+    return arrayOfTaskDivs;
+  }
+
   renderTasks(){
     const formattedDate = this.formatCurrentDate(this.props.currentDate);
     const currentDayTasks = this.props.calendar[formattedDate];
@@ -73,19 +88,8 @@ class DayStructured extends React.Component {
       const sortedCurrentDayTasks = this.sortCurrentDayTasks(currentDayTasks);
       const currentDayHoursWithTasks = this.grabTaskHoursFromCurrentDayObject(sortedCurrentDayTasks);
       const formattedTaskDivs = currentDayHoursWithTasks.map(taskHour => {
-        const currentTasksDiv = [];
         const tasksForCurrentHour = this.grabTasksForHour(taskHour, sortedCurrentDayTasks);
-        tasksForCurrentHour.forEach(taskObject => {
-          const { taskId, taskDuration, taskStartTime, taskName } = taskObject;
-          const taskClasses = `task task_Color_${taskId} task_Duration_${taskDuration}`;
-          if (taskName === "Farmer's Market" && taskStartTime === '0000') {
-            currentTasksDiv.push(<div className={taskClasses}>{taskName}</div>);
-          }
-          else if (taskStartTime > '0400') {
-            currentTasksDiv.push(<div className={`${taskClasses} task_Start_${taskStartTime}`}>{taskName}</div>);
-          }
-        });
-
+        const currentTasksDiv = this.formatTasksToDiv(tasksForCurrentHour);
         const currentHourDiv = 
           <div className='dayStructured_hour' key={taskHour}>
             <span className='dayStructured_hour_marker'><span className='dayStructured_hour_marker_text'>{taskHour}</span> <hr></hr></span>
@@ -97,8 +101,7 @@ class DayStructured extends React.Component {
       });
 
       return formattedTaskDivs;
-    }
-    
+    }  
     // let's put a loading notification here.
   }
 
