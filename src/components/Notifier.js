@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const IntervalExample = () => {
+const Notifier = () => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const IntervalExample = () => {
   );
 };
 
-export default IntervalExample;
+export default Notifier;
