@@ -62,11 +62,10 @@ class Notifier extends React.Component {
   }
 
   render(){
+    const formattedDate = this.formatCurrentDate(this.props.currentDate);
     return(
       <div className="notifier">
-        <h5 className="notfier_header">
-          Notifier here!
-        </h5>
+        <h3>Schedule for {formattedDate} </h3>
         <button
           onClick={e => {
             e.preventDefault();

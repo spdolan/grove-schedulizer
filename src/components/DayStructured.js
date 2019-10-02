@@ -109,10 +109,8 @@ class DayStructured extends React.Component {
 
 
   render(){
-    const formattedDate = this.formatCurrentDate(this.props.currentDate);
     return(
       <div className='dayStructured'>
-        <h3>Schedule for {formattedDate}</h3>
         <Notifier />
         {this.renderTasks()}
       </div>

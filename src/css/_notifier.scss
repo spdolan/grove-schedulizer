@@ -1,0 +1,15 @@
+.notifier{
+  display: flex;
+  flex-flow: row;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  
+  h3{
+    margin-right: 2rem;
+  }
+  button{
+    height: 2rem;
+  }
+}

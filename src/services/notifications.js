@@ -10,7 +10,7 @@ const notify = () => {
     // Let's check whether notification permissions have already been granted
     else if (Notification.permission === "granted") {
       // If it's okay let's create a notification
-      const notification = new Notification("Hi there! You will now receive notifications for your schedule.");
+      new Notification("Hi there! You will now receive notifications for your schedule.");
       resolve(true);
     }
 
@@ -19,7 +19,7 @@ const notify = () => {
       Notification.requestPermission(function (permission) {
         // If the user accepts, let's create a notification
         if (permission === "granted") {
-          const notification = new Notification("Hi there! You will now receive notifications for your schedule.");
+          new Notification("Hi there! You will now receive notifications for your schedule.");
           resolve(true)
         } else {
           resolve(false);
