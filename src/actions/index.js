@@ -4,6 +4,7 @@ import getTasksData from '../services/getTasksData';
 import addDatesToCalendarFromCron from '../services/addDatesToCalendarFromCron';
 import addTaskDurationInHours from '../services/addTaskDurationInHours';
 import notify from '../services/notifications';
+
 // some syntactic sugar here for us to auto-complete action types elsewhere
 export const GET_TASKS = 'GET_TASKS';
 export const UPDATE_CALENDAR = 'UPDATE_CALENDAR';
@@ -38,7 +39,6 @@ export const updateCalendarFromTasksCron = (currentTaskList, currentCalendar) =>
 
 export const setCurrentDateFromCalendar = (dateString) => dispatch => {
   // if selected date is current date, we will keep the current time
-  console.log(dateString, moment().format("MM/DD/YYYY"));
   const updatedCurrentDate = dateString !== moment().format("MM/DD/YYYY") ? moment(dateString, 'MM/DD/YYYY') : moment(new Date());
   dispatch({type: SET_CURRENT_DATE, payload: updatedCurrentDate});
 }

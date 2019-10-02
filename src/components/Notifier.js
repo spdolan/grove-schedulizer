@@ -9,28 +9,32 @@ class Notifier extends React.Component {
     super(props);
     this.state = {
       currentDayTasks: [],
-      seconds: 0
+      interval: 0
     }
     this.formatCurrentDate = this.formatCurrentDate.bind(this);
     this.sortCurrentDayTasks = this.sortCurrentDayTasks.bind(this);
     this.clickedNotifyButton = this.clickedNotifyButton.bind(this);
     this.tick = this.tick.bind(this);
-    this.checkTaskTimes = this.checkTaskTimes.bind(this);
+    this.checkTaskTimeToStart = this.checkTaskTimeToStart.bind(this);
     this.checkForNotifications = this.checkForNotifications.bind(this);
+    this.createNotifications = this.createNotifications.bind(this);
+    this.sendNotifications = this.sendNotifications.bind(this);
+    this.sendNotification = this.sendNotification.bind(this);
   }
 
   componentDidMount(){
-    this.interval = setInterval(() => this.tick(), 10000);
+    // our app will check every minute for new Notifications
+    this.interval = setInterval(() => this.tick(), 60000);
     const formattedDate = this.formatCurrentDate(this.props.currentDate);
     const currentDayTasks = this.props.calendar[formattedDate];
     this.setState({ currentDayTasks });
   }
 
   componentDidUpdate(){
-    
-    // console.log('Checking stuff here!');
-    // console.log('Notifications are: ', this.props.acceptsNotifications);
-    // this.checkForNotifications();
+    if(this.props.acceptsNotifications){
+      const currentNotifications = this.createNotifications();
+      this.sendNotifications(currentNotifications);
+    }
   }
 
   componentWillUnmount() {
@@ -39,26 +43,43 @@ class Notifier extends React.Component {
 
   tick() {
     this.setState(prevState => ({
-      seconds: prevState.seconds + 1
+      interval: prevState.interval + 1
     }));
   }
 
-  checkTaskTimes(taskObject){
+  checkTaskTimeToStart(taskObject){
+    // we are using Moment to determine our difference between current time and task times
     const currentTime = moment();
-    console.log(currentTime);
-    
     const taskTime = moment(taskObject.taskDateTime);
-    console.log(taskTime);
-    console.log(currentTime.diff(taskTime, 'minutes'))
+    return currentTime.diff(taskTime, 'minutes');
   }
 
   checkForNotifications(){
-    // return this.state.currentDayTasks.filter(taskObject => {
-    //   return Math.abs(taskObject.taskStartTime - currentTime) <= 15; 
-    // })
-    this.state.currentDayTasks.forEach(taskObject => {
-      this.checkTaskTimes(taskObject);
+    // we will notify folks if their task is beginning within 15 minutes
+    return this.state.currentDayTasks.filter(taskObject => {
+      return this.checkTaskTimeToStart(taskObject) === -15 || this.checkTaskTimeToStart(taskObject) === 0; 
     })
+  }
+
+  createNotifications(){
+    const tasksToNotify = this.checkForNotifications();
+    const createNotifications = tasksToNotify.map(taskObject => {
+      return this.checkTaskTimeToStart(taskObject) === 0 ?
+        `It's time for: ${taskObject.taskName}!` :
+        `${taskObject.taskName} starts in less than 15 minutes!`;
+    })
+
+    return createNotifications;
+  }
+
+  sendNotifications = (notificationMessageArray) => {
+    notificationMessageArray.forEach(notificationMessage => {
+      this.sendNotification(notificationMessage);
+    })
+  }
+
+  sendNotification = (notificationMessage) => {
+    new Notification(notificationMessage);
   }
 
   // return a string formatted MM/DD/YYYY based on our currentDate store property
@@ -116,7 +137,6 @@ class Notifier extends React.Component {
           }}>
           Please notify me!
         </button>
-        <h5>Seconds: {this.state.seconds} </h5>
       </div>
     )
   }

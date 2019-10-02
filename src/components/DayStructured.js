@@ -17,22 +17,32 @@ class DayStructured extends React.Component {
     this.formatTasksToDiv = this.formatTasksToDiv.bind(this);
   }
   // return a string formatted MM/DD/YYYY based on our currentDate store property
-  formatCurrentDate(momentDayObject){
+  formatCurrentDate(momentDayObject) {
     let formattedCurrentDate = '';
+    let formattedCurrentDay = '';
+    let formattedCurrentMonth = '';
     if (momentDayObject._a) {
       // check if Moment's zero-based months are before October, and prepend a 0
-      const formattedCurrentMonth = (momentDayObject._a[1] + 1) < 10 ?
+      formattedCurrentMonth = (momentDayObject._a[1] + 1) < 10 ?
         `0${(momentDayObject._a[1] + 1)}` :
         (momentDayObject._a[1] + 1);
       // check if current date is before the 10th, and prepend a 0
-      const formattedCurrentDay = (momentDayObject._a[2]) < 10 ?
+      formattedCurrentDay = (momentDayObject._a[2]) < 10 ?
         `0${(momentDayObject._a[2])}` :
         (momentDayObject._a[2]);
       // interpolate our formatted Month/Day/Year
       formattedCurrentDate = `${formattedCurrentMonth}/${formattedCurrentDay}/${momentDayObject._a[0]}`
     } else {
-      // no need to parse if the current day is a non-parsed MomentJS object
-      formattedCurrentDate = momentDayObject.format("MM/DD/YYYY");
+      // check if Moment's zero-based months are before October, and prepend a 0
+      formattedCurrentMonth = (this.props.currentDate._i.getMonth() + 1) < 10 ?
+        `0${(this.props.currentDate._i.getMonth() + 1)}` :
+        (this.props.currentDate._i.getMonth() + 1);
+      // check if current date is before the 10th, and prepend a 0
+      formattedCurrentDay = (this.props.currentDate._i.getDate()) < 10 ?
+        `0${(this.props.currentDate._i.getDate())}` :
+        (this.props.currentDate._i.getDate());
+
+      formattedCurrentDate = `${formattedCurrentMonth}/${formattedCurrentDay}/${momentDayObject.format("YYYY")}`;
     }
     return formattedCurrentDate;
   }
