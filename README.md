@@ -1,7 +1,7 @@
 <summary>Schedulizer for Grove Co.</summary> 
   
 * This application takes tasks from Grove's task endpoint [https://scheduler-challenge.grove.co/] , and converts them into a viewable schedule.
-* The app currently only looks at the month of October 2019, but could be opened for any date range.
+* The app currently only looks at the date range placed within the addDatesToCalendarFromCron service's option object (current month of November 2019), but could be opened for any date range.
 * Schedulizer also will send browser Notifications if the user so desires, but the User must click the
 * 'Notify Me' button above the schedule for the day. Note: this will only notify the User for the 
 * current day's tasks (not the selected day).
