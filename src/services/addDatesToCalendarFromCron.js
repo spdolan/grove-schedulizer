@@ -2,8 +2,8 @@ const parser = require('cron-parser');
 
 // time boxing our calendar for the app - these could be .env values
 const options = {
-  currentDate: '2019-10-01 00:00:00',
-  endDate: '2019-10-31 23:59:59',
+  currentDate: '2019-11-01 00:00:00',
+  endDate: '2019-11-30 23:59:59',
   tz: 'America/New_York',
   iterator: true
 };
